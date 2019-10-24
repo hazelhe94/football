@@ -39,7 +39,7 @@ parser.add_argument('--simple', action='store_true')
 class RllibGFootball(MultiAgentEnv):
   """An example of a wrapper for GFootball to make it compatible with rllib."""
 
-  def __init__(self, number_of_players_agent_controls):
+  def __init__(self, num_agents):
     self.env = football_env.create_environment(
         env_name='test_example_multiagent', stacked=False,
         logdir='/tmp/rllib_test',
