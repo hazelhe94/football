@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
   #policies = {
       #'policy_{}'.format(i): gen_policy(i) for i in range(args.num_policies)
-  }
+  #}
   #policy_ids = list(policies.keys())
 
   tune.run(
