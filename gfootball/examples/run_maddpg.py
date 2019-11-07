@@ -26,7 +26,7 @@ class RllibGFootball(MultiAgentEnv):
   def __init__(self, env_config, num_agents):
     self.env = football_env.create_environment(
         env_name='test_example_multiagent', stacked=False,
-        rewards='scoring'
+        rewards='scoring',
         #logdir='/tmp/rllib_test',
         enable_goal_videos=False, enable_full_episode_videos=False, render=True,
         dump_frequency=0,
@@ -41,7 +41,7 @@ class RllibGFootball(MultiAgentEnv):
     self.num_agents = num_agents
 
 
- def reset(self):
+  def reset(self):
     original_obs = self.env.reset()
     obs = {}
     for x in range(self.num_agents):
