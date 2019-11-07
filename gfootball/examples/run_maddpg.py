@@ -38,6 +38,7 @@ class RllibGFootball(MultiAgentEnv):
         low=self.env.observation_space.low[0],
         high=self.env.observation_space.high[0],
         dtype=self.env.observation_space.dtype)
+    self.num_agents = num_agents
 
 
 
