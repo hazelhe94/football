@@ -79,8 +79,8 @@ if __name__ == '__main__':
   obs_space = single_env.observation_space
   act_space = single_env.action_space
 
-  def gen_policy(_):
-    return (None, obs_space, act_space, {})
+  def gen_policy(n):
+    return (None, obs_space, act_space, {"agent_id": n,})
 
 
   policies = {
