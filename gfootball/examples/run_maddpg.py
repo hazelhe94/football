@@ -14,7 +14,7 @@ from ray.tune.registry import register_env
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--num-agents', type=int, default=3)
-parser.add_argument('--num-policies', type=int, default=3)
+#parser.add_argument('--num-policies', type=int, default=3)
 parser.add_argument('--num-iters', type=int, default=100000)
 parser.add_argument('--simple', action='store_true')
 
@@ -79,14 +79,14 @@ if __name__ == '__main__':
   obs_space = single_env.observation_space
   act_space = single_env.action_space
 
-  def gen_policy(n):
-    return (None, obs_space, act_space, {"agent_id": n,})
+  #def gen_policy(n):
+    #return (None, obs_space, act_space, {"agent_id": n,})
 
 
-  policies = {
-      'policy_{}'.format(i): gen_policy(i) for i in range(args.num_policies)
+  #policies = {
+      #'policy_{}'.format(i): gen_policy(i) for i in range(args.num_policies)
   }
-  policy_ids = list(policies.keys())
+  #policy_ids = list(policies.keys())
 
   tune.run(
       'contrib/MADDPG',
@@ -100,7 +100,16 @@ if __name__ == '__main__':
             #},
           'train_batch_size': 2000,
           'multiagent': {
-              'policies': policies,
+              "policies": {
+                    "pol1": (None, obs_space, act_space, {
+                        "agent_id": 0,
+                    }),
+                    "pol2": (None, obs_space, act_space, {
+                        "agent_id": 1,
+                    }),
+                    "pol3": (None, obs_space, act_space, {
+                        "agent_id": 2,
+                },
               'policy_mapping_fn': tune.function(
                   lambda agent_id: policy_ids[int(agent_id[6:])]),
           },
