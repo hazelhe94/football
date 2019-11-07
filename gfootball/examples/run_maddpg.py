@@ -23,7 +23,7 @@ parser.add_argument('--simple', action='store_true')
 class RllibGFootball(MultiAgentEnv):
 
 
-  def __init__(self, env_config):
+  def __init__(self, num_agents):
     self.env = football_env.create_environment(
         env_name='test_example_multiagent', stacked=False,
         rewards='scoring',
@@ -32,7 +32,7 @@ class RllibGFootball(MultiAgentEnv):
         dump_frequency=0,
         number_of_left_players_agent_controls=num_agents,
         channel_dimensions=(42, 42))
-    self.actions_are_logits = env_config.get("actions_are_logits", False)
+    #self.actions_are_logits = env_config.get("actions_are_logits", False)
     self.action_space = gym.spaces.Discrete(self.env.action_space.nvec[1])
     self.observation_space = gym.spaces.Box(
         low=self.env.observation_space.low[0],
@@ -95,9 +95,9 @@ if __name__ == '__main__':
       config={
           'env': 'gfootball',
           'learning_starts': 100,
-           'env_config': {
-                'actions_are_logits': True,
-            },
+           #'env_config': {
+                #'actions_are_logits': True,
+            #},
           'train_batch_size': 2000,
           'multiagent': {
               'policies': policies,
