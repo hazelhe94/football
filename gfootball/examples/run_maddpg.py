@@ -23,7 +23,7 @@ parser.add_argument('--simple', action='store_true')
 class RllibGFootball(MultiAgentEnv):
 
 
-  def __init__(self, env_config, num_agents):
+  def __init__(self, env_config):
     self.env = football_env.create_environment(
         env_name='test_example_multiagent', stacked=False,
         rewards='scoring',
@@ -38,7 +38,7 @@ class RllibGFootball(MultiAgentEnv):
         low=self.env.observation_space.low[0],
         high=self.env.observation_space.high[0],
         dtype=self.env.observation_space.dtype)
-    self.num_agents = num_agents
+
 
 
   def reset(self):
