@@ -109,8 +109,9 @@ if __name__ == '__main__':
                     }),
                     "pol3": (None, obs_space, act_space, {
                         "agent_id": 2,
-                },
-              'policy_mapping_fn': tune.function(
+                    }),
+              },
+              "policy_mapping_fn": tune.function(
                   lambda agent_id: policy_ids[int(agent_id[6:])]),
           },
       },
